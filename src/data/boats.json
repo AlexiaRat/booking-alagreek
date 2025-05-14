@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "name": "Boat Tour Santorini",
+      "images": ["/boats/boat1.jpg", "/boats/boat12.jpg", "/boats/boat13.jpg"],
+      "description": "Take a scenic boat tour around Santorini."
+    },
+    {
+      "id": 2,
+      "name": "Luxury Yacht Athens",
+      "images": ["/boats/boat21.jpg", "/boats/boat22.jpg", "/boats/boat23.jpg"],
+      "description": "Rent a luxury yacht in Athens."
+    }
+  ]
+  
