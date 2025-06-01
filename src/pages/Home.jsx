@@ -26,7 +26,7 @@ function Home() {
     ro: {
       title: "Descoperă Grecia",
       description:
-        "Grecia, cu plajele sale superbe și istoria fascinantă, este destinația perfectă pentru vacanța ta.",
+        "De ce ai accesat acest site? Vrei în Grecia… vrei Vacanța ALaGreek și speri să găsești calea cea mai simplă spre soarele Eladei? Personalizez vacanța ta în funcție de ceea ce îți dorești și vacanța ta grecească va deveni una dintre cele mai frumoase amintiri!!! Pentru că vreau să îți ofer ceea ce și mie mi-ar plăcea să găsesc în vacanță, discut parte în parte cu fiecare dintre voi până la momentul în care vei spune: asta e!!",
       categoryLabels: {
         cazare: "Cazare",
         barci: "Barci",
@@ -35,6 +35,8 @@ function Home() {
       slotDescriptions: {
         cazare:
           "Explorează locurile de cazare din Grecia! Descoperă vile luxoase și hoteluri cu servicii complete.",
+
+
         barci:
           "Descoperă plimbările cu barca pe apele cristaline ale Greciei, cu itinerarii spectaculoase.",
         excursii:
@@ -103,8 +105,8 @@ function Home() {
   // Alegem datele în funcție de categorie
   const getItemsByCategory = () => {
     if (activeCategory === "cazare") return accommodations;
-    //if (activeCategory === "barci") return boats;
-    //if (activeCategory === "excursii") return excursions;
+    if (activeCategory === "barci") return boats;
+    if (activeCategory === "excursii") return excursions;
     return [];
   };
 
@@ -120,7 +122,8 @@ function Home() {
       {/* Secțiune principală */}
       <div
         style={{
-          width: "100%",
+          
+          maxWidth: "1800px",
           height: "20vh",
           background: "#fff",
           color: "#000",
@@ -129,7 +132,7 @@ function Home() {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          padding: "20px",
+          padding: "20px 40px 60px 40px",
         }}
       >
         <h2>{texts[language].title}</h2>

@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
+import { LanguageContext } from "../context/LanguageContext";
 
 const ParallaxContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: white; /* Setează fundalul alb */
+  background-color: white;
 `;
 
 const BackgroundImage = styled.div`
@@ -15,7 +16,7 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: ${(props) => props.height}vh;
-  background: url("/grecia/santorini2.jpg") no-repeat center center;
+  background: url("/MissMary/wh2.jpeg") no-repeat center center;
   background-size: cover;
   transition: height 0.2s ease-out;
 `;
@@ -31,21 +32,26 @@ const Title = styled.h1`
   transition: top 0.2s ease-out, opacity 0.2s ease-out;
 `;
 
+const titles = {
+  ro: "Grecia",
+  en: "Greece",
+  gr: "Ελλάδα",
+};
+
 function ParallaxEffect() {
   const [imageHeight, setImageHeight] = useState(100);
-  const [titleTop, setTitleTop] = useState(50);
+  const [titleTop, setTitleTop] = useState(150);
   const [titleOpacity, setTitleOpacity] = useState(1);
   const containerRef = useRef(null);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     const handleScroll = () => {
-      let scrollY = window.scrollY;
-      let maxScroll = containerRef.current.clientHeight; // Obține înălțimea efectivă a containerului
-
-      let newHeight = Math.max(5, 100 - (scrollY / maxScroll) * 95);
-      let newTop = Math.max(10, 50 - (scrollY / maxScroll) * 40);
-      let newOpacity = Math.max(0, 1 - scrollY / maxScroll);
-
+      const scrollY = window.scrollY;
+      const maxScroll = containerRef.current.clientHeight;
+      const newHeight = Math.max(5, 100 - (scrollY / maxScroll) * 95);
+      const newTop = Math.max(10, 50 - (scrollY / maxScroll) * 40);
+      const newOpacity = Math.max(0, 1 - scrollY / maxScroll);
       setImageHeight(newHeight);
       setTitleTop(newTop);
       setTitleOpacity(newOpacity);
@@ -58,7 +64,9 @@ function ParallaxEffect() {
   return (
     <ParallaxContainer ref={containerRef}>
       <BackgroundImage height={imageHeight} />
-      <Title top={titleTop} opacity={titleOpacity}>Grecia</Title>
+      <Title top={titleTop} opacity={titleOpacity}>
+        {titles[language]}
+      </Title>
     </ParallaxContainer>
   );
 }
