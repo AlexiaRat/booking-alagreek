@@ -46,7 +46,7 @@ function Home() {
     en: {
       title: "Discover Greece",
       description:
-        "Greece, with its stunning beaches and fascinating history, is the perfect destination for your vacation.",
+        "Why do you visit this site? Do you want a holiday to Greece… do you want a vacation ALaGreek style and hope to find a way to the sun of Elada? I personalize your vacation according to what you desire, and your Greek holiday will become one of your most beautiful memories!!! Because I want to offer you what I would like to find myself on vacation, I discuss with each of you until the moment you say: this is it!!",
       categoryLabels: {
         cazare: "Accommodation",
         barci: "Boats",
@@ -64,7 +64,7 @@ function Home() {
     gr: {
       title: "Ανακαλύψτε την Ελλάδα",
       description:
-        "Η Ελλάδα, με τις όμορφες παραλίες και την συναρπαστική ιστορία της, είναι ο ιδανικός προορισμός για τις διακοπές σας.",
+        "Γιατί επισκεφθήκατε αυτή την ιστοσελίδα; Θέλετε να πάτε στην Ελλάδα… θέλετε διακοπές με την ALaGreek και ελπίζετε να βρείτε τον πιο εύκολο δρόμο προς τον ήλιο της Ελάδας; Προσαρμόζω τις διακοπές σας ανάλογα με αυτά που επιθυμείτε και οι ελληνικές σας διακοπές θα γίνουν μια από τις πιο όμορφες αναμνήσεις!!! Γιατί θέλω να σας προσφέρω ό,τι θα ήθελα κι εγώ να βρω στις διακοπές μου, συζητώ μέρος-μέρος με τον καθένα από εσάς μέχρι τη στιγμή που θα πείτε: αυτό είναι!!",
       categoryLabels: {
         cazare: "Καταλύματα",
         barci: "Βάρκες",
@@ -132,7 +132,7 @@ function Home() {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          padding: "20px 40px 60px 40px",
+          padding: "40px 40px 60px 40px",
         }}
       >
         <h2>{texts[language].title}</h2>
