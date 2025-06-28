@@ -10,7 +10,6 @@ import CategoryBar from "../components/CategoryBar";
 import { ArrowLeft, ArrowRight } from "../components/Arrows";
 import { LanguageContext } from "../context/LanguageContext";
 
-
 function Home() {
   const { lang } = useParams();
   const { language, selectLanguage } = useContext(LanguageContext);
@@ -21,6 +20,7 @@ function Home() {
   useEffect(() => {
     selectLanguage(lang);
   }, [lang]);
+
   // Obiectul de texte pentru diferite limbi
   const texts = {
     ro: {
@@ -35,8 +35,6 @@ function Home() {
       slotDescriptions: {
         cazare:
           "Explorează locurile de cazare din Grecia! Descoperă vile luxoase și hoteluri cu servicii complete.",
-
-
         barci:
           "Descoperă plimbările cu barca pe apele cristaline ale Greciei, cu itinerarii spectaculoase.",
         excursii:
@@ -119,24 +117,10 @@ function Home() {
         <ParallaxEffect />
       </div>
 
-      {/* Secțiune principală */}
-      <div
-        style={{
-          
-          maxWidth: "1800px",
-          height: "20vh",
-          background: "#fff",
-          color: "#000",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          padding: "40px 40px 60px 40px",
-        }}
-      >
-        <h2>{texts[language].title}</h2>
-        <p>{texts[language].description}</p>
+      {/* Secțiune principală - RESPONSIVE */}
+      <div style={mainSectionStyle}>
+        <h2 style={titleStyle}>{texts[language].title}</h2>
+        <p style={descriptionStyle}>{texts[language].description}</p>
       </div>
 
       {/* Bara de navigație pentru categorii */}
@@ -192,7 +176,6 @@ function Home() {
         ))}
       </div>
 
-      
       {/* Footer */}
       <div style={{ padding: "20px" }}>
         <Content>
@@ -204,10 +187,42 @@ function Home() {
   );
 }
 
-/* STILURI */
+/* STILURI RESPONSIVE */
+
+// Secțiunea principală - responsive
+const mainSectionStyle = {
+  maxWidth: "1800px",
+  margin: "0 auto",
+  background: "#fff",
+  color: "#000",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  padding: "40px 20px 60px 20px",
+  minHeight: "auto", // Nu mai forțăm înălțimea
+  
+  // Media query pentru mobile în CSS-in-JS nu merge, 
+  // dar putem folosi window.innerWidth sau CSS separat
+};
+
+const titleStyle = {
+  fontSize: "clamp(1.5rem, 4vw, 2.5rem)", // Responsive font size
+  marginBottom: "20px",
+  lineHeight: "1.2",
+};
+
+const descriptionStyle = {
+  fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)", // Responsive font size  
+  lineHeight: "1.6",
+  maxWidth: "800px",
+  margin: "0 auto",
+};
+
 const slotsContainerStyle = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", // Redus min-width pentru mobile
   gap: "20px",
   padding: "20px",
 };
@@ -218,22 +233,25 @@ const slotStyle = {
   background: "#fff",
   borderRadius: "10px",
   overflow: "hidden",
-  height: "400px",
+  minHeight: "400px", // Schimbat în minHeight pentru flexibilitate
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   transition: "box-shadow 0.3s",
 };
 
 const imageContainerStyle = {
-  flex: 2,
   position: "relative",
   overflow: "hidden",
+  minHeight: "250px", // Înălțime minimă pentru imagine
+  maxHeight: "300px", // Înălțime maximă
 };
 
 const textContainerStyle = {
-  flex: 1,
-  padding: "10px",
+  padding: "15px", // Mărit padding-ul
   textAlign: "center",
-  overflow: "hidden",
+  minHeight: "120px", // Înălțime minimă pentru text
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
 };
 
 const imageStyle = {
@@ -257,16 +275,14 @@ const arrowContainerStyle = {
 
 const arrowButtonStyle = {
   pointerEvents: "auto",
-  //position: "relative",
   background: "transparent",
-  //backgroundColor: "rgba(0, 0, 0, 0.4)",
   color: "#000",
   border: "none",
   outline: "none",
   cursor: "pointer",
   borderRadius: "50%",
   width: "60px",
-  height: "0px",
+  height: "40px", // Dăm înălțime pentru a fi clicabile
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -274,38 +290,17 @@ const arrowButtonStyle = {
 };
 
 const slotTitleStyle = {
-  margin: "5px 0",
-  fontSize: "1.2rem",
+  margin: "0 0 10px 0",
+  fontSize: "clamp(1rem, 3vw, 1.2rem)", // Responsive
   color: "#000",
+  fontWeight: "bold",
 };
 
 const slotDescStyle = {
   margin: 0,
-  fontSize: "0.9rem",
-  color: "#000",
-};
-
-const languageButtonStyle = {
-  background: "#56f0b2",
-  color: "white",
-  border: "none",
-  padding: "10px 15px",
-  borderRadius: "5px",
-  cursor: "pointer",
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  fontSize: "16px",
-  display: "block",
-  width: "100px",
-  margin: "5px auto",
-};
-
-const dropdownContainerStyle = {
-  position: "absolute",
-  bottom: "50px",
-  right: "0",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+  fontSize: "clamp(0.8rem, 2vw, 0.9rem)", // Responsive
+  color: "#666",
+  lineHeight: "1.4",
 };
 
 export default Home;
