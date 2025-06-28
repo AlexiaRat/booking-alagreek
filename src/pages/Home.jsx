@@ -179,8 +179,7 @@ function Home() {
       {/* Footer */}
       <div style={{ padding: "20px" }}>
         <Content>
-          <p>Descoperă cele mai frumoase locuri din Grecia!</p>
-          <p>Derulează în jos pentru mai multe informații...</p>
+         
         </Content>
       </div>
     </div>
