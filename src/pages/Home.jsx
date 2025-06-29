@@ -15,7 +15,7 @@ function Home() {
   const { language, selectLanguage } = useContext(LanguageContext);
 
   const [activeCategory, setActiveCategory] = useState("cazare");
-  const [imageIndexes, setImageIndexes] = useState(Array(8).fill(0));
+  const [imageIndexes, setImageIndexes] = useState(Array(1000).fill(0));
 
   useEffect(() => {
     selectLanguage(lang);
